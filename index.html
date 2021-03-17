@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-width: 300px;
+            font-size: 20px;
+            font-family: 'Lobster', cursive;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: lightgrey;
+        }
+
+        .logo {
+            background-color: white;
+        }
+
+        .logo h1 {
+            color: rgb(0, 195, 255);
+        }
+
+        #icons {
+            text-align: center;
+        }
+
+        .icon {
+            text-align: center;
+            display: inline-block;
+            border: 1px solid grey;
+            background-color: white;
+            width: 200px;
+            height: 200px;
+            margin: 30px 30px;
+        }
+
+        .icon i {
+            margin-top: 80px;
+        }
+
+        .select {
+            background-color: rgb(0, 195, 255);
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        .select h3 {
+            display: inline-block;
+            color: white;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><h1>FontIcons</h1></div>
+        </div>
+        <div class="select">
+            <h3>filtra per tipo</h3>
+            <select name="type" id="type">
+                <option value="all">all</option>
+            </select>
+        </div>
+        <div id="icons">
+            
+        </div>
+    </div>
+
+
+
+    <script>
+        var types = [];
+        const icons = [
+            {
+                name: 'cat',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'crow',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'dog',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'dove',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'dragon',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'horse',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'hippo',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'fish',
+                prefix: 'fa-',
+                type: 'animal',
+                family: 'fas'
+            },
+            {
+                name: 'carrot',
+                prefix: 'fa-',
+                type: 'vegetable',
+                family: 'fas'
+            },
+            {
+                name: 'apple-alt',
+                prefix: 'fa-',
+                type: 'vegetable',
+                family: 'fas'
+            },
+            {
+                name: 'lemon',
+                prefix: 'fa-',
+                type: 'vegetable',
+                family: 'fas'
+            },
+            {
+                name: 'pepper-hot',
+                prefix: 'fa-',
+                type: 'vegetable',
+                family: 'fas'
+            },
+            {
+                name: 'user-astronaut',
+                prefix: 'fa-',
+                type: 'user',
+                family: 'fas'
+            },
+            {
+                name: 'user-graduate',
+                prefix: 'fa-',
+                type: 'user',
+                family: 'fas'
+            },
+            {
+                name: 'user-ninja',
+                prefix: 'fa-',
+                type: 'user',
+                family: 'fas'
+            },
+            {
+                name: 'user-secret',
+                prefix: 'fa-',
+                type: 'user',
+                family: 'fas'
+            }
+        ];
+
+        const iconI = document.getElementById('icons');
+
+        icons.forEach((element, index) => {
+            let {type} = element;
+            types.push(type);
+
+            for (let i = 0; i < index; i++) {
+                
+                if (types[index] === types[i]) {
+                    delete types[index];
+                }
+
+            }
+
+        });
+
+        const option = document.getElementById('type');
+
+        const typesFiltered = types.filter((element) => {
+            
+            if (element != null) {
+                option.innerHTML += `<option value="${element}">${element}</option>`;
+                return element;
+            }
+
+        });
+
+        const colors = ['blue', 'red', 'green', 'purple', 'yellow', 'cyan', 'pink', 'grey'];
+        const colorsFiltered = [];
+
+        for (let i = 0; i < typesFiltered.length; i++) {
+            colorsFiltered[i] = colors[i];
+        }
+
+        iconI.innerHTML = " ";
+        
+        icons.map((element) => {
+
+            for (i = 0; i < typesFiltered.length; i++) {
+
+                if (element.type === typesFiltered[i]) {
+                    return element.color = colorsFiltered[i];
+                }
+
+            }
+
+        });
+
+        icons.forEach((element, index) => {
+            let {name, prefix, type, family, color} = element;
+            iconI.innerHTML += `<div class='icon'> <i class="${family} ${prefix}${name}" style="color: ${color};"></i> <p>${name}</p> </div>`
+        });
+
+        option.addEventListener('change', function() {
+            iconI.innerHTML = " ";
+            console.log(event.target.value);
+            
+            icons.forEach((element) => {
+                let {name, prefix, type, family, color} = element;
+
+                if (event.target.value === type) {
+                    iconI.innerHTML += `<div class='icon'> <i class="${family} ${prefix}${name}" style="color: ${color};"></i> <p>${name}</p> </div>`
+                } else if (event.target.value === 'all') {
+                    iconI.innerHTML += `<div class='icon'> <i class="${family} ${prefix}${name}" style="color: ${color};"></i> <p>${name}</p> </div>`
+                }
+
+            });
+
+        });
+    </script>
+</body>
+</html>
